@@ -1,0 +1,39 @@
+{
+  "name": "beachcenter2026",
+  "version": "1.0.0",
+  "description": "Sistema de reservas para quadras de vôlei, futevôlei e beach tennis",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "keywords": [
+    "beachcenter",
+    "nodejs",
+    "express",
+    "agendamento",
+    "pix",
+    "volei",
+    "futevolei",
+    "beach-tennis"
+  ],
+  "author": "Arthur",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.2.0",
+    "qrcode": "^1.5.4",
+    "sqlite3": "^6.0.1",
+    "uuid": "^14.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

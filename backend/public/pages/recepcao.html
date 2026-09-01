@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recepção | BeachCenter2026</title>
+
+    <link rel="stylesheet" href="../css/recepcao.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>🏖 BeachCenter2026</h1>
+
+    <p>Painel da Recepção</p>
+
+</header>
+
+<div class="container">
+
+    <div class="topo">
+
+        <input
+            type="date"
+            id="data"
+        >
+
+        <input
+            type="text"
+            id="pesquisa"
+            placeholder="🔍 Pesquisar cliente..."
+        >
+
+        <button id="novaReserva">
+
+            ➕ Nova Reserva
+
+        </button>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Horário</th>
+                <th>Cliente</th>
+                <th>Modalidade</th>
+                <th>Pagamento</th>
+                <th>Status</th>
+                <th>Ações</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="agenda">
+
+            <tr>
+
+                <td colspan="6">
+
+                    Carregando agenda...
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>Reserva</h2>
+
+        <p id="cliente"></p>
+
+        <p id="modalidade"></p>
+
+        <p id="horario"></p>
+
+        <button id="confirmarPagamento">
+
+            💳 Confirmar Pagamento
+
+        </button>
+
+        <button id="checkin">
+
+            ✅ Fazer Check-in
+
+        </button>
+
+        <button id="cancelar">
+
+            ❌ Cancelar Reserva
+
+        </button>
+
+        <button id="fechar">
+
+            Fechar
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="../js/auth.js"></script>
+
+<script src="../js/recepcao.js"></script>
+
+</body>
+
+</html>

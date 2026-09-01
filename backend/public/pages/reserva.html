@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova Reserva | Beach Center</title>
+
+    <link rel="stylesheet" href="../css/reserva.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🏖️ Nova Reserva</h1>
+
+        <p>Escolha sua modalidade, data e horário.</p>
+
+        <form id="reservaForm">
+
+            <label>Modalidade</label>
+
+            <select id="modalidade" required>
+                <option value="">Carregando modalidades...</option>
+            </select>
+
+            <label>Data</label>
+
+            <input type="date" id="data" required>
+
+            <label>Horário</label>
+
+            <select id="horario" required>
+                <option value="">Selecione uma data</option>
+            </select>
+
+            <label>Duração</label>
+
+            <select id="duracao">
+
+                <option value="0.5">30 minutos</option>
+                <option value="1">1 hora</option>
+                <option value="1.5">1 hora e 30 minutos</option>
+                <option value="2">2 horas</option>
+                <option value="2.5">2 horas e 30 minutos</option>
+                <option value="3">3 horas</option>
+
+            </select>
+
+            <div class="total">
+
+                Total:
+                <span id="valor">R$ 35,00</span>
+
+            </div>
+
+            <button type="submit">
+                Confirmar Reserva
+            </button>
+
+        </form>
+
+        <br>
+
+        <button onclick="location.href='dashboard.html'">
+            ⬅ Voltar ao Dashboard
+        </button>
+
+   </div>
+
+<script src="../js/auth.js"></script>
+<script src="../js/reserva.js"></script>
+
+</body>
+</html>

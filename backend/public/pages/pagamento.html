@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pagamento PIX</title>
+
+<link rel="stylesheet" href="../css/pagamento.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💳 Pagamento PIX</h1>
+
+<div class="card">
+
+<h2 id="cliente">Cliente</h2>
+
+<p id="modalidade"></p>
+
+<p id="data"></p>
+
+<p id="horario"></p>
+
+<h2 id="valor">R$ 0,00</h2>
+
+<img
+id="qrcode"
+alt="QR Code PIX">
+
+<textarea
+id="pix"
+readonly>
+</textarea>
+
+<button id="copiar">
+
+📋 Copiar Código PIX
+
+</button>
+
+<button id="confirmar">
+
+✅ Já Efetuei o Pagamento
+
+</button>
+
+<button id="voltar">
+
+⬅ Voltar
+
+</button>
+
+</div>
+
+</div>
+
+<script src="../js/auth.js"></script>
+
+<script src="../js/pagamento.js"></script>
+
+</body>
+
+</html>

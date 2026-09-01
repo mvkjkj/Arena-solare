@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>🏖️ BeachCenter2026</h1>
+
+    <p>Painel Administrativo</p>
+
+</header>
+
+<div style="text-align:center; margin:20px 0;">
+
+    <button onclick="location.href='admin-agenda.html'">
+
+        📅 Agenda das Quadras
+
+    </button>
+
+</div>
+
+<section class="cards">
+
+    <div class="card">
+
+        <h3>👥 Clientes</h3>
+
+        <h2 id="clientes">0</h2>
+
+    </div>
+
+    <div class="card">
+
+        <h3>📅 Reservas</h3>
+
+        <h2 id="reservas">0</h2>
+
+    </div>
+
+    <div class="card">
+
+        <h3>💰 Faturamento</h3>
+
+        <h2 id="faturamento">R$ 0,00</h2>
+
+    </div>
+
+    <div class="card">
+
+        <h3>💳 Pendentes</h3>
+
+        <h2 id="pendentes">0</h2>
+
+    </div>
+
+</section>
+
+<section class="tabela">
+
+    <h2>Todas as Reservas</h2>
+
+<div class="filtros">
+
+    <input
+        type="text"
+        id="pesquisa"
+        placeholder="🔍 Pesquisar cliente, modalidade, status..."
+    >
+
+</div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Cliente</th>
+                <th>Modalidade</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Valor</th>
+                <th>Pagamento</th>
+                <th>Status</th>
+                <th>Confirmar Pagamento</th>
+                <th>Cancelar Reserva</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="listaReservas">
+
+            <tr>
+
+                <td colspan="9">
+
+                    Carregando...
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<script src="../js/auth.js"></script>
+<script src="../js/admin.js"></script>
+
+</body>
+
+</html>

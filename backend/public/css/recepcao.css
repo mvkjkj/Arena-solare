@@ -1,0 +1,346 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+
+    background:#f4f6f9;
+
+}
+
+header{
+
+    background:#0f766e;
+
+    color:#fff;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.container{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:30px auto;
+
+}
+
+.topo{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.topo input{
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+#data{
+
+    width:180px;
+
+}
+
+#pesquisa{
+
+    flex:1;
+
+}
+
+#novaReserva{
+
+    background:#0f766e;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+#novaReserva:hover{
+
+    background:#0b5f59;
+
+}
+
+table{
+
+    width:100%;
+
+    background:#fff;
+
+    border-collapse:collapse;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+thead{
+
+    background:#0f766e;
+
+    color:#fff;
+
+}
+
+th{
+
+    padding:15px;
+
+    text-align:center;
+
+}
+
+td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:1px solid #eee;
+
+}
+
+tr:hover{
+
+    background:#f7f7f7;
+
+}
+
+button{
+
+    padding:8px 12px;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    margin:2px;
+
+    transition:.3s;
+
+}
+
+.btnPago{
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+.btnPago:hover{
+
+    background:#16a34a;
+
+}
+
+.btnCheck{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.btnCheck:hover{
+
+    background:#1d4ed8;
+
+}
+
+.btnCancelar{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+.btnCancelar:hover{
+
+    background:#b91c1c;
+
+}
+
+.btnEditar{
+
+    background:#f59e0b;
+
+    color:white;
+
+}
+
+.btnEditar:hover{
+
+    background:#d97706;
+
+}
+
+.btnLivre{
+
+    background:#0f766e;
+
+    color:white;
+
+}
+
+.btnLivre:hover{
+
+    background:#115e59;
+
+}
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.45);
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.modal-content{
+
+    width:420px;
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:25px;
+
+}
+
+.modal-content h2{
+
+    margin-bottom:20px;
+
+    color:#0f766e;
+
+}
+
+.modal-content p{
+
+    margin:12px 0;
+
+}
+
+.modal-content button{
+
+    width:100%;
+
+    margin-top:10px;
+
+}
+
+#confirmarPagamento{
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+#checkin{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+#cancelar{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+#fechar{
+
+    background:#6b7280;
+
+    color:white;
+
+}
+
+@media(max-width:900px){
+
+    table{
+
+        font-size:13px;
+
+    }
+
+    th,td{
+
+        padding:8px;
+
+    }
+
+    .topo{
+
+        flex-direction:column;
+
+    }
+
+    #data{
+
+        width:100%;
+
+    }
+
+}
