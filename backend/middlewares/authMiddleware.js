@@ -1,14 +1,14 @@
 const jwt = require("jsonwebtoken");
 
-const SECRET = "beachcenter2026_secret";
+const SECRET = process.env.JWT_SECRET;
+
+if (!SECRET) {
+    throw new Error("JWT_SECRET não configurado no arquivo .env");
+}
 
 function verificarToken(req, res, next) {
 
     const authHeader = req.headers.authorization;
-
-    console.log("\n========== NOVA REQUISIÇÃO ==========");
-    console.log("URL:", req.originalUrl);
-    console.log("Authorization:", authHeader);
 
     if (!authHeader) {
         return res.status(401).json({
@@ -16,13 +16,19 @@ function verificarToken(req, res, next) {
         });
     }
 
-    const token = authHeader.split(" ")[1];
+    const partes = authHeader.split(" ");
+
+    if (partes.length !== 2 || partes[0] !== "Bearer" || !partes[1]) {
+        return res.status(401).json({
+            erro: "Formato do token inválido."
+        });
+    }
+
+    const token = partes[1];
 
     try {
 
         const usuario = jwt.verify(token, SECRET);
-
-        console.log("JWT OK:", usuario);
 
         req.usuario = usuario;
 
@@ -30,15 +36,11 @@ function verificarToken(req, res, next) {
 
     } catch (erro) {
 
-        console.log("ERRO JWT:", erro.name);
-        console.log("MENSAGEM:", erro.message);
-
         return res.status(401).json({
-            erro: "Token inválido."
+            erro: "Token inválido ou expirado."
         });
 
     }
-
 }
 
 module.exports = verificarToken;

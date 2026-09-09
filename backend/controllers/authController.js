@@ -3,7 +3,11 @@ const jwt = require("jsonwebtoken");
 
 const usuarioModel = require("../models/usuarioModel");
 
-const SECRET = "beachcenter2026_secret";
+const SECRET = process.env.JWT_SECRET;
+
+if (!SECRET) {
+    throw new Error("JWT_SECRET não configurado no arquivo .env");
+}
 
 // =====================
 // CADASTRO

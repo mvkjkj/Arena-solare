@@ -21,3 +21,25 @@ function verificarRecepcao(req, res, next) {
 }
 
 module.exports = verificarRecepcao;
+
+function verificarRecepcao(req, res, next) {
+
+    if (!req.usuario) {
+        return res.status(401).json({
+            erro: "Usuário não autenticado."
+        });
+    }
+
+    if (
+        req.usuario.tipo !== "recepcao" &&
+        req.usuario.tipo !== "admin"
+    ) {
+        return res.status(403).json({
+            erro: "Acesso permitido apenas para recepção ou administração."
+        });
+    }
+
+    next();
+}
+
+module.exports = verificarRecepcao;
