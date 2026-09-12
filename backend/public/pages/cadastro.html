@@ -2,11 +2,15 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Conta | Beach Center</title>
+
+    <title>Criar Conta | SOLARE ARENA</title>
 
     <link rel="stylesheet" href="../css/login.css">
+
 </head>
 
 <body>
@@ -15,9 +19,9 @@
 
     <div class="card">
 
-        <h1>🏖️ Beach Center</h1>
+        <h1>🏖️ SOLARE</h1>
 
-        <p>Crie sua conta</p>
+        <p>Crie sua conta e faça sua reserva</p>
 
         <form id="cadastroForm">
 
@@ -25,29 +29,35 @@
                 type="text"
                 id="nome"
                 placeholder="Nome completo"
-                required>
+                autocomplete="name"
+                required
+            >
 
             <input
                 type="email"
                 id="email"
                 placeholder="E-mail"
-                required>
+                autocomplete="email"
+                required
+            >
 
             <input
                 type="text"
                 id="telefone"
-                placeholder="Telefone">
+                placeholder="Telefone"
+                autocomplete="tel"
+            >
 
             <input
                 type="password"
                 id="senha"
                 placeholder="Senha"
-                required>
+                autocomplete="new-password"
+                required
+            >
 
             <button type="submit">
-
                 Criar Conta
-
             </button>
 
         </form>
@@ -57,17 +67,13 @@
             Já possui conta?
 
             <a href="/pages/login.html">
-
                 Entrar
-
             </a>
 
         </p>
 
         <a class="voltar" href="/">
-
             ← Voltar ao início
-
         </a>
 
     </div>

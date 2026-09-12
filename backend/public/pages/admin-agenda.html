@@ -2,65 +2,86 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Agenda | BeachCenter2026</title>
+    <title>Agenda | SOLARE ARENA</title>
 
     <link rel="stylesheet" href="../css/admin-agenda.css">
-
 </head>
 
 <body>
 
-<header>
+    <!-- CABEÇALHO -->
+    <header>
 
-    <h1>📅 Agenda das Quadras</h1>
+        <div>
+            <h1>☀️ SOLARE</h1>
+            <p>ARENA • Agenda das Quadras</p>
+        </div>
 
-    <p>Visualize todas as reservas do dia.</p>
-
-</header>
-
-<div class="container">
-
-    <div class="topo">
-
-        <label>Selecionar Data</label>
-
-        <input type="date" id="data">
-
-        <button id="atualizar">
-
-            Atualizar Agenda
-
+        <button onclick="location.href='admin.html'">
+            ← Painel Administrativo
         </button>
 
-    </div>
+    </header>
 
-    <div id="agenda">
 
-        <p class="carregando">
+    <!-- CONTEÚDO -->
+    <main class="container">
 
-            Carregando agenda...
+        <!-- FILTRO -->
+        <section class="filtro card-filtro">
 
-        </p>
+            <div>
+                <label for="data">
+                    Selecionar data
+                </label>
 
-    </div>
+                <input
+                    type="date"
+                    id="data"
+                >
+            </div>
 
-    <br>
+            <button id="atualizar">
+                🔄 Atualizar Agenda
+            </button>
 
-    <button onclick="location.href='admin.html'">
+        </section>
 
-        ⬅ Voltar ao Painel
 
-    </button>
+        <!-- AGENDA -->
+        <section>
 
-</div>
+            <div class="titulo-agenda">
 
-<script src="../js/auth.js"></script>
-<script src="../js/admin-agenda.js"></script>
+                <div>
+                    <h2>📅 Agenda do dia</h2>
+
+                    <p>
+                        Visualize a ocupação das quadras em tempo real.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div id="agenda">
+
+                <p class="carregando">
+                    Carregando agenda...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin-agenda.js"></script>
 
 </body>
 

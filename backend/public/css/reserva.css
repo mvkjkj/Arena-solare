@@ -1,92 +1,443 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+
+/* =========================================
+   SOLARE ARENA — RESERVA
+   ========================================= */
+
+:root {
+    --terracota: #D86438;
+    --terracota-dark: #CC5A2B;
+
+    --grafite: #121212;
+    --grafite-2: #1A1A1A;
+    --grafite-3: #242424;
+
+    --branco: #FFFFFF;
+    --creme: #F4F0EA;
+
+    --areia: #E2D3B8;
+    --areia-dark: #D2C1A5;
+
+    --luz: #FFB84D;
+
+    --texto-suave: #AAA59E;
+
+    --borda: rgba(255, 255, 255, 0.10);
 }
 
-body{
-    background:linear-gradient(135deg,#008060,#00a884);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:30px;
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container{
-    width:100%;
-    display:flex;
-    justify-content:center;
+body {
+    min-height: 100vh;
+
+    padding: 40px 20px;
+
+    font-family: 'Inter', sans-serif;
+
+    color: var(--creme);
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(216, 100, 56, 0.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(255, 184, 77, 0.06),
+            transparent 30%
+        ),
+        var(--grafite);
 }
 
-.card{
-    width:500px;
-    background:#fff;
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 15px 35px rgba(0,0,0,.2);
+/* =========================================
+   DECORAÇÃO
+   ========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    top: -150px;
+    left: -150px;
+
+    border-radius: 50%;
+
+    background: var(--terracota);
+
+    opacity: 0.05;
+
+    filter: blur(100px);
+
+    pointer-events: none;
 }
 
-.card h1{
-    color:#008060;
-    margin-bottom:10px;
+/* =========================================
+   CONTAINER
+   ========================================= */
+
+.container {
+    width: 100%;
+    max-width: 560px;
+
+    margin: auto;
+
+    position: relative;
+    z-index: 2;
 }
 
-.card p{
-    color:#666;
-    margin-bottom:25px;
+/* =========================================
+   CARD
+   ========================================= */
+
+.card {
+    width: 100%;
+
+    padding: 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(36, 36, 36, 0.98),
+            rgba(19, 19, 19, 0.98)
+        );
+
+    border: 1px solid var(--borda);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55);
+
+    animation: aparecer 0.5s ease;
 }
 
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:8px;
-    font-weight:bold;
+/* =========================================
+   CABEÇALHO
+   ========================================= */
+
+.card h1 {
+    margin-bottom: 8px;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: var(--branco);
 }
+
+.card h1::after {
+    content: "SOLARE ARENA";
+
+    display: block;
+
+    margin-top: 5px;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+    color: var(--terracota);
+}
+
+.card > p {
+    margin-bottom: 28px;
+
+    color: var(--texto-suave);
+
+    font-size: 14px;
+}
+
+/* =========================================
+   FORMULÁRIO
+   ========================================= */
+
+#reservaForm {
+    width: 100%;
+}
+
+/* =========================================
+   LABELS
+   ========================================= */
+
+label {
+    display: block;
+
+    margin-top: 20px;
+    margin-bottom: 8px;
+
+    color: var(--creme);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+/* =========================================
+   INPUTS E SELECTS
+   ========================================= */
 
 input,
-select{
-    width:100%;
-    padding:14px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
+select {
+    width: 100%;
+
+    height: 54px;
+
+    padding: 0 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #111111;
+
+    color: var(--branco);
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 15px;
+
+    transition: 0.3s ease;
+
+    cursor: pointer;
+}
+
+input:hover,
+select:hover {
+    border-color: rgba(216, 100, 56, 0.35);
 }
 
 input:focus,
-select:focus{
-    border-color:#008060;
-    outline:none;
+select:focus {
+    border-color: var(--terracota);
+
+    box-shadow:
+        0 0 0 3px rgba(216, 100, 56, 0.10);
 }
 
-.total{
-    margin-top:25px;
-    padding:18px;
-    background:#f4f4f4;
-    border-radius:10px;
-    font-size:22px;
-    text-align:center;
-    font-weight:bold;
+select option {
+    background: #1A1A1A;
+
+    color: var(--branco);
 }
 
-#valor{
-    color:#008060;
+/* =========================================
+   DATA
+   ========================================= */
+
+input[type="date"] {
+    color-scheme: dark;
 }
 
-button{
-    width:100%;
-    margin-top:25px;
-    padding:16px;
-    background:#008060;
-    color:white;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
+/* =========================================
+   TOTAL
+   ========================================= */
+
+.total {
+    margin-top: 30px;
+
+    padding: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border: 1px solid rgba(255, 184, 77, 0.15);
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 184, 77, 0.07),
+            rgba(216, 100, 56, 0.08)
+        );
+
+    color: var(--creme);
+
+    font-size: 16px;
+
+    font-weight: 600;
 }
 
-button:hover{
-    background:#006d52;
+#valor {
+    color: var(--luz);
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+
+button {
+    width: 100%;
+
+    height: 55px;
+
+    margin-top: 22px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: var(--terracota);
+
+    color: var(--branco);
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(216, 100, 56, 0.20);
+
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: var(--terracota-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(216, 100, 56, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* =========================================
+   BOTÃO VOLTAR
+   ========================================= */
+
+.card > button:last-child {
+    margin-top: 12px;
+
+    background: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    color: var(--texto-suave);
+
+    box-shadow: none;
+}
+
+.card > button:last-child:hover {
+    background: rgba(255, 255, 255, 0.05);
+
+    border-color: rgba(255, 255, 255, 0.20);
+
+    color: var(--branco);
+
+    box-shadow: none;
+}
+
+/* =========================================
+   ANIMAÇÃO
+   ========================================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 15px;
+    }
+
+    .card {
+        padding: 30px 22px;
+
+        border-radius: 15px;
+    }
+
+    .card h1 {
+        font-size: 24px;
+    }
+
+    input,
+    select,
+    button {
+        height: 52px;
+    }
+
+    .total {
+        padding: 18px;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 5px;
+    }
+
+    #valor {
+        font-size: 23px;
+    }
 }

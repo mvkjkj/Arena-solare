@@ -1,113 +1,306 @@
-body{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-margin:0;
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background: #121212;
+    color: #F4F0EA;
+    min-height: 100vh;
+}
 
-font-family:Arial;
 
-background:#f4f6f8;
+/* =========================
+   CABEÇALHO
+========================= */
+
+.admin-header {
+    background: #1A1A1A;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 25px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header h1 {
+    color: #FFFFFF;
+    font-size: 28px;
+    letter-spacing: .08em;
+}
+
+.admin-header p {
+    margin-top: 5px;
+    color: #D2C1A5;
+    font-size: 13px;
+    letter-spacing: .08em;
+}
+
+.btn-voltar {
+    background: transparent;
+    color: #F4F0EA;
+    border: 1px solid rgba(255,255,255,.15);
+    padding: 11px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn-voltar:hover {
+    border-color: #D86438;
+    color: #D86438;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.admin-container {
+    width: 92%;
+    max-width: 1500px;
+    margin: 35px auto;
+}
+
+
+/* =========================
+   AÇÕES
+========================= */
+
+.acoes {
+    margin-bottom: 25px;
+}
+
+.btn-agenda {
+    background: #D86438;
+    color: #FFFFFF;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn-agenda:hover {
+    background: #CC5A2B;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #1A1A1A;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: .25s;
+}
+
+.card:hover {
+    border-color: rgba(216,100,56,.4);
+    transform: translateY(-2px);
+}
+
+.icone {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: rgba(216,100,56,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+}
+
+.card h3 {
+    color: #D2C1A5;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.card h2 {
+    color: #FFFFFF;
+    font-size: 27px;
+}
+
+
+/* =========================
+   TABELA
+========================= */
+
+.tabela {
+    background: #1A1A1A;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.tabela-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.tabela-topo h2 {
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.tabela-topo p {
+    color: #A9A29A;
+    font-size: 14px;
+}
+
+.tabela-topo input {
+    width: 360px;
+    padding: 13px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #121212;
+    color: #FFFFFF;
+    outline: none;
+    font-size: 14px;
+}
+
+.tabela-topo input:focus {
+    border-color: #D86438;
+}
+
+.tabela-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/* =========================
+   TABELA
+========================= */
+
+table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #121212;
+}
+
+th {
+    padding: 14px 10px;
+    color: #E2D3B8;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    white-space: nowrap;
+}
+
+td {
+    padding: 14px 10px;
+    text-align: center;
+    color: #F4F0EA;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    font-size: 13px;
+}
+
+tbody tr {
+    transition: .2s;
+}
+
+tbody tr:hover {
+    background: rgba(216,100,56,.06);
+}
+
+
+/* =========================
+   BOTÕES DA TABELA
+========================= */
+
+table button {
+    border: none;
+    padding: 8px 11px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 2px;
+}
+
+table button:hover {
+    opacity: .85;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 1000px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tabela-topo {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tabela-topo input {
+        width: 100%;
+    }
 
 }
 
-header{
 
-background:#16a085;
+@media (max-width: 600px) {
 
-color:white;
+    .admin-header {
+        padding: 20px;
+        gap: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-padding:25px;
+    .admin-header h1 {
+        font-size: 23px;
+    }
 
-text-align:center;
+    .admin-container {
+        width: 94%;
+        margin: 25px auto;
+    }
 
-}
+    .cards {
+        grid-template-columns: 1fr;
+    }
 
-.cards{
+    .card {
+        padding: 20px;
+    }
 
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:20px;
-
-padding:20px;
-
-}
-
-.card{
-
-background:white;
-
-padding:20px;
-
-border-radius:15px;
-
-box-shadow:0 5px 15px rgba(0,0,0,.15);
-
-text-align:center;
-
-}
-
-.card h2{
-
-font-size:34px;
-
-color:#16a085;
-
-}
-
-.tabela{
-
-padding:20px;
-
-}
-
-table{
-
-width:100%;
-
-border-collapse:collapse;
-
-background:white;
-
-box-shadow:0 5px 15px rgba(0,0,0,.15);
-
-}
-
-th{
-
-background:#16a085;
-
-color:white;
-
-padding:14px;
-
-}
-
-td{
-
-padding:12px;
-
-border-bottom:1px solid #ddd;
-
-text-align:center;
-
-}
-
-.filtros{
-
-    margin:20px 0;
-
-}
-
-.filtros input{
-
-    width:350px;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    border:1px solid #ccc;
-
-    font-size:16px;
+    .tabela {
+        padding: 18px;
+    }
 
 }

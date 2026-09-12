@@ -2,130 +2,195 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Recepção | BeachCenter2026</title>
+    <title>Recepção | SOLARE ARENA</title>
 
-    <link rel="stylesheet" href="../css/recepcao.css">
-
+    <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 
 <body>
 
-<header>
+    <!-- MENU LATERAL -->
+    <div class="sidebar">
 
-    <h1>🏖 BeachCenter2026</h1>
+        <h2>☀️ SOLARE</h2>
+        <small>ARENA</small>
 
-    <p>Painel da Recepção</p>
+        <hr>
 
-</header>
+        <button onclick="location.href='/dashboard'">
+            🏠 Dashboard
+        </button>
 
-<div class="container">
+        <button onclick="location.href='/pages/reserva.html'">
+            📅 Nova Reserva
+        </button>
 
-    <div class="topo">
+        <button onclick="location.href='/pages/minhas-reservas.html'">
+            📋 Minhas Reservas
+        </button>
 
-        <input
-            type="date"
-            id="data"
-        >
+        <button onclick="location.href='/pages/perfil.html'">
+            👤 Meu Perfil
+        </button>
 
-        <input
-            type="text"
-            id="pesquisa"
-            placeholder="🔍 Pesquisar cliente..."
-        >
+        <button class="active">
+            🖥 Recepção
+        </button>
 
-        <button id="novaReserva">
+        <button onclick="location.href='/pages/admin.html'">
+            ⚙ Administração
+        </button>
 
-            ➕ Nova Reserva
-
+        <button onclick="sair()">
+            🚪 Sair
         </button>
 
     </div>
 
-    <table>
 
-        <thead>
+    <!-- CONTEÚDO -->
+    <div class="content">
 
-            <tr>
+        <header>
 
-                <th>Horário</th>
-                <th>Cliente</th>
-                <th>Modalidade</th>
-                <th>Pagamento</th>
-                <th>Status</th>
-                <th>Ações</th>
+            <h1>Recepção</h1>
 
-            </tr>
+            <p>
+                Controle a agenda, pagamentos e atendimento da SOLARE ARENA.
+            </p>
 
-        </thead>
+        </header>
 
-        <tbody id="agenda">
 
-            <tr>
+        <!-- FILTROS -->
+        <section class="cards">
 
-                <td colspan="6">
+            <div class="card">
 
-                    Carregando agenda...
+                <h2>📅 Agenda</h2>
 
-                </td>
+                <div class="topo">
 
-            </tr>
+                    <input
+                        type="date"
+                        id="data"
+                    >
 
-        </tbody>
+                    <input
+                        type="text"
+                        id="pesquisa"
+                        placeholder="Pesquisar cliente..."
+                    >
 
-    </table>
+                    <button id="novaReserva">
+                        + Nova Reserva
+                    </button>
 
-</div>
+                </div>
 
-<!-- MODAL -->
+            </div>
 
-<div id="modal" class="modal">
+        </section>
 
-    <div class="modal-content">
 
-        <h2>Reserva</h2>
+        <!-- TABELA -->
+        <section class="card tabela-container">
 
-        <p id="cliente"></p>
+            <h2>Reservas do dia</h2>
 
-        <p id="modalidade"></p>
+            <div class="tabela-scroll">
 
-        <p id="horario"></p>
+                <table>
 
-        <button id="confirmarPagamento">
+                    <thead>
 
-            💳 Confirmar Pagamento
+                        <tr>
+                            <th>Horário</th>
+                            <th>Cliente</th>
+                            <th>Modalidade</th>
+                            <th>Valor</th>
+                            <th>Pagamento</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
 
-        </button>
+                    </thead>
 
-        <button id="checkin">
+                    <tbody id="listaReservas">
 
-            ✅ Fazer Check-in
+                        <tr>
+                            <td colspan="7">
+                                Carregando reservas...
+                            </td>
+                        </tr>
 
-        </button>
+                    </tbody>
 
-        <button id="cancelar">
+                </table>
 
-            ❌ Cancelar Reserva
+            </div>
 
-        </button>
-
-        <button id="fechar">
-
-            Fechar
-
-        </button>
+        </section>
 
     </div>
 
-</div>
 
-<script src="../js/auth.js"></script>
+    <!-- MODAL -->
+    <div
+        id="modal"
+        class="modal"
+    >
 
-<script src="../js/recepcao.js"></script>
+        <div class="modal-content">
+
+            <h2>Detalhes da reserva</h2>
+
+            <p>
+                <strong>Cliente:</strong>
+                <span id="modalCliente"></span>
+            </p>
+
+            <p>
+                <strong>Modalidade:</strong>
+                <span id="modalModalidade"></span>
+            </p>
+
+            <p>
+                <strong>Horário:</strong>
+                <span id="modalHorario"></span>
+            </p>
+
+            <p>
+                <strong>Valor:</strong>
+                <span id="modalValor"></span>
+            </p>
+
+            <button id="confirmarPagamento">
+                💳 Confirmar pagamento
+            </button>
+
+            <button id="checkin">
+                ✅ Fazer check-in
+            </button>
+
+            <button id="cancelar">
+                ❌ Cancelar reserva
+            </button>
+
+            <button id="fechar">
+                Fechar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="/js/auth.js"></script>
+    <script src="/js/recepcao.js"></script>
 
 </body>
 

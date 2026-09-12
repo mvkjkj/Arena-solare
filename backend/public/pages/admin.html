@@ -2,127 +2,170 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Painel Administrativo</title>
+    <title>Administração | SOLARE ARENA</title>
 
     <link rel="stylesheet" href="../css/admin.css">
-
 </head>
 
 <body>
 
-<header>
+    <!-- CABEÇALHO -->
+    <header class="admin-header">
 
-    <h1>🏖️ BeachCenter2026</h1>
+        <div>
+            <h1>☀️ SOLARE</h1>
+            <p>ARENA • Painel Administrativo</p>
+        </div>
 
-    <p>Painel Administrativo</p>
+        <button
+            class="btn-voltar"
+            onclick="location.href='/dashboard'"
+        >
+            ← Dashboard
+        </button>
 
-</header>
+    </header>
 
-<div style="text-align:center; margin:20px 0;">
 
-    <button onclick="location.href='admin-agenda.html'">
+    <!-- CONTEÚDO -->
+    <main class="admin-container">
 
-        📅 Agenda das Quadras
 
-    </button>
+        <!-- AÇÕES -->
+        <section class="acoes">
 
-</div>
+            <button
+                class="btn-agenda"
+                onclick="location.href='admin-agenda.html'"
+            >
+                📅 Agenda das Quadras
+            </button>
 
-<section class="cards">
+        </section>
 
-    <div class="card">
 
-        <h3>👥 Clientes</h3>
+        <!-- INDICADORES -->
+        <section class="cards">
 
-        <h2 id="clientes">0</h2>
+            <div class="card">
 
-    </div>
+                <span class="icone">👥</span>
 
-    <div class="card">
+                <div>
+                    <h3>Clientes</h3>
+                    <h2 id="clientes">0</h2>
+                </div>
 
-        <h3>📅 Reservas</h3>
+            </div>
 
-        <h2 id="reservas">0</h2>
 
-    </div>
+            <div class="card">
 
-    <div class="card">
+                <span class="icone">📅</span>
 
-        <h3>💰 Faturamento</h3>
+                <div>
+                    <h3>Reservas</h3>
+                    <h2 id="reservas">0</h2>
+                </div>
 
-        <h2 id="faturamento">R$ 0,00</h2>
+            </div>
 
-    </div>
 
-    <div class="card">
+            <div class="card">
 
-        <h3>💳 Pendentes</h3>
+                <span class="icone">💰</span>
 
-        <h2 id="pendentes">0</h2>
+                <div>
+                    <h3>Faturamento</h3>
+                    <h2 id="faturamento">R$ 0,00</h2>
+                </div>
 
-    </div>
+            </div>
 
-</section>
 
-<section class="tabela">
+            <div class="card">
 
-    <h2>Todas as Reservas</h2>
+                <span class="icone">💳</span>
 
-<div class="filtros">
+                <div>
+                    <h3>Pendentes</h3>
+                    <h2 id="pendentes">0</h2>
+                </div>
 
-    <input
-        type="text"
-        id="pesquisa"
-        placeholder="🔍 Pesquisar cliente, modalidade, status..."
-    >
+            </div>
 
-</div>
+        </section>
 
-    <table>
 
-        <thead>
+        <!-- RESERVAS -->
+        <section class="tabela">
 
-            <tr>
+            <div class="tabela-topo">
 
-                <th>Cliente</th>
-                <th>Modalidade</th>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Valor</th>
-                <th>Pagamento</th>
-                <th>Status</th>
-                <th>Confirmar Pagamento</th>
-                <th>Cancelar Reserva</th>
+                <div>
+                    <h2>Todas as Reservas</h2>
 
-            </tr>
+                    <p>
+                        Consulte e gerencie os agendamentos da arena.
+                    </p>
+                </div>
 
-        </thead>
+                <input
+                    type="text"
+                    id="pesquisa"
+                    placeholder="🔍 Pesquisar cliente, modalidade ou status..."
+                >
 
-        <tbody id="listaReservas">
+            </div>
 
-            <tr>
 
-                <td colspan="9">
+            <div class="tabela-scroll">
 
-                    Carregando...
+                <table>
 
-                </td>
+                    <thead>
 
-            </tr>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Modalidade</th>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Valor</th>
+                            <th>Pagamento</th>
+                            <th>Status</th>
+                            <th>Pagamento</th>
+                            <th>Reserva</th>
+                        </tr>
 
-        </tbody>
+                    </thead>
 
-    </table>
 
-</section>
+                    <tbody id="listaReservas">
 
-<script src="../js/auth.js"></script>
-<script src="../js/admin.js"></script>
+                        <tr>
+
+                            <td colspan="9">
+                                Carregando reservas...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
 
 </body>
 
