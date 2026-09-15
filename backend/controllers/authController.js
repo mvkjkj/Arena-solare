@@ -16,11 +16,23 @@ const cadastrar = async (req, res) => {
 
     const { nome, email, senha, telefone } = req.body;
 
+if (nome.length > 100 || email.length > 150 || senha.length > 100 || (telefone && telefone.length > 20)) {
+    return res.status(400).json({
+        erro: "Dados informados excedem o limite permitido."
+    });
+}
+
     if (!nome || !email || !senha) {
         return res.status(400).json({
             erro: "Preencha os campos obrigatórios."
         });
     }
+
+if (senha && senha.length < 8) {
+    return res.status(400).json({
+        erro: "A senha deve ter pelo menos 8 caracteres."
+    });
+}
 
     usuarioModel.buscarPorEmail(email, async (erro, usuario) => {
 
@@ -76,27 +88,19 @@ const login = (req, res) => {
             return res.status(500).json(erro);
         }
 
-        if (!usuario) {
-
-            return res.status(404).json({
-
-                erro: "Usuário não encontrado."
-
-            });
-
-        }
+     if (!usuario) {
+    return res.status(401).json({
+        erro: "E-mail ou senha inválidos."
+    });
+}
 
         const ok = await bcrypt.compare(senha, usuario.senha);
 
-        if (!ok) {
-
-            return res.status(401).json({
-
-                erro: "Senha incorreta."
-
-            });
-
-        }
+      if (!ok) {
+    return res.status(401).json({
+        erro: "E-mail ou senha inválidos."
+    });
+}
 
         const token = jwt.sign({
 

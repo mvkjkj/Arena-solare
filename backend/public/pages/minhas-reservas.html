@@ -36,11 +36,17 @@
             👤 Meu Perfil
         </button>
 
-        <button onclick="location.href='/pages/recepcao.html'">
+        <!-- SOMENTE RECEPÇÃO / ADMIN -->
+        <button
+            id="btnRecepcao"
+            onclick="location.href='/pages/recepcao.html'">
             🖥 Recepção
         </button>
 
-        <button onclick="location.href='/pages/admin.html'">
+        <!-- SOMENTE ADMIN / GERENTE -->
+        <button
+            id="btnAdmin"
+            onclick="location.href='/pages/admin.html'">
             ⚙ Administração
         </button>
 
@@ -71,8 +77,13 @@
             <div id="listaReservas">
 
                 <div class="card">
+
                     <h3>Carregando reservas...</h3>
-                    <p>Aguarde enquanto buscamos seus agendamentos.</p>
+
+                    <p>
+                        Aguarde enquanto buscamos seus agendamentos.
+                    </p>
+
                 </div>
 
             </div>
@@ -84,6 +95,52 @@
 
     <script src="/js/auth.js"></script>
     <script src="/js/minhas-reservas.js"></script>
+
+    <script>
+
+        // ==============================
+        // CONTROLE DO MENU POR USUÁRIO
+        // ==============================
+
+        const usuario = JSON.parse(
+            localStorage.getItem("usuario")
+        );
+
+        const btnRecepcao =
+            document.getElementById("btnRecepcao");
+
+        const btnAdmin =
+            document.getElementById("btnAdmin");
+
+        if (!usuario) {
+
+            location.href = "/pages/login.html";
+
+        } else {
+
+            const tipo = usuario.tipo;
+
+            // CLIENTE
+            if (tipo === "cliente") {
+
+                btnRecepcao.remove();
+                btnAdmin.remove();
+
+            }
+
+            // RECEPÇÃO
+            else if (tipo === "recepcao") {
+
+                btnAdmin.remove();
+
+            }
+
+            // ADMIN E GERENTE
+            // continuam vendo os dois
+
+        }
+
+    </script>
 
 </body>
 

@@ -1,8 +1,29 @@
+const rateLimit = require("express-rate-limit");
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const path = require("path");
 require("dotenv").config();
+
+const limiteLogin = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+        erro: "Muitas tentativas de login. Aguarde 15 minutos e tente novamente."
+    }
+});
+
+const limiteCadastro = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+        erro: "Muitos cadastros realizados. Aguarde 15 minutos e tente novamente."
+    }
+});
 
 // =========================
 // BANCO DE DADOS
@@ -188,6 +209,8 @@ app.get("/admin", (req, res) => {
 // API
 // =========================
 
+app.use("/api/login", limiteLogin);
+app.use("/api/cadastro", limiteCadastro);
 app.use("/api", authRoutes);
 
 app.use("/api", reservaRoutes);

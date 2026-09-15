@@ -33,13 +33,8 @@
         👤 Meu Perfil
     </button>
 
-    <button id="btnRecepcao">
-        🖥 Recepção
-    </button>
-
-    <button id="btnAdmin">
-        ⚙ Painel Administrativo
-    </button>
+    <!-- SERÃO ADICIONADOS PELO JAVASCRIPT
+         SOMENTE PARA RECEPÇÃO/ADMIN -->
 
     <button id="btnSair">
         🚪 Sair
@@ -47,29 +42,24 @@
 
 </div>
 
+
 <div class="content">
 
 <header>
 
     <h1>
-
         Olá,
-
-        <span id="nomeUsuario">
-
-            Usuário
-
-        </span>
-
+        <span id="nomeUsuario">Usuário</span>
     </h1>
 
     <p>
-
-        Bem-vindo a Arena Solare
-
+        Bem-vindo à Arena Solare
     </p>
 
 </header>
+
+
+<!-- INFORMAÇÕES DA ARENA -->
 
 <section class="cards">
 
@@ -79,7 +69,12 @@
 
         <span>3</span>
 
+        <p>
+            Volleyball, Futvôlei e Beach Tennis
+        </p>
+
     </div>
+
 
     <div class="card">
 
@@ -87,7 +82,12 @@
 
         <span>R$ 70,00</span>
 
+        <p>
+            Reserve sua quadra
+        </p>
+
     </div>
+
 
     <div class="card">
 
@@ -95,86 +95,77 @@
 
         <span>08:00 às 00:00</span>
 
+        <p>
+            Todos os dias
+        </p>
+
     </div>
 
 </section>
+
+
+<!-- ÁREA DO CLIENTE -->
 
 <section class="cards">
 
     <div class="card">
 
-        <h3>📅 Reservas</h3>
+        <h3>📅 Faça sua reserva</h3>
 
-        <span id="totalReservas">--</span>
+        <p>
+            Escolha a modalidade, data,
+            horário e duração.
+        </p>
+
+        <button onclick="location.href='/pages/reserva.html'">
+
+            Fazer Reserva
+
+        </button>
 
     </div>
 
+
     <div class="card">
 
-        <h3>💳 Pagamentos Pendentes</h3>
+        <h3>📋 Minhas reservas</h3>
 
-        <span id="pendentes">--</span>
+        <p>
+            Consulte seus agendamentos,
+            pagamentos e horários.
+        </p>
+
+        <button onclick="location.href='/pages/minhas-reservas.html'">
+
+            Ver Reservas
+
+        </button>
 
     </div>
 
+
     <div class="card">
 
-        <h3>💵 Faturamento</h3>
+        <h3>👤 Meu perfil</h3>
 
-        <span id="faturamento">--</span>
+        <p>
+            Consulte e atualize seus
+            dados pessoais.
+        </p>
+
+        <button onclick="location.href='/pages/perfil.html'">
+
+            Meu Perfil
+
+        </button>
 
     </div>
 
 </section>
 
-<section class="cards">
-
-    <div class="card">
-
-        <h3>🖥 Recepção</h3>
-
-        <p>
-
-            Controle pagamentos,
-            check-in,
-            agenda do dia
-            e atendimento.
-
-        </p>
-
-    </div>
-
-    <div class="card">
-
-        <h3>⚙ Administração</h3>
-
-        <p>
-
-            Gerencie usuários,
-            reservas,
-            faturamento
-            e estatísticas.
-
-        </p>
-
-    </div>
-
-    <div class="card">
-
-        <h3>📢 Sistema</h3>
-
-        <p>
-
-            Arena Solare
-        
-
-        </p>
-
-    </div>
-
-</section>
 
 </div>
+
 
 <script src="/js/auth.js"></script>
 

@@ -1,141 +1,532 @@
-body{
+/* =========================================
+   SOLARE ARENA
+   AGENDA ADMINISTRATIVA
+========================================= */
 
-    margin:0;
-
-    font-family:Arial,Helvetica,sans-serif;
-
-    background:#f4f6f9;
-
+* {
+    box-sizing: border-box;
 }
 
-header{
-
-    background:#0f766e;
-
-    color:white;
-
-    padding:25px;
-
-    text-align:center;
-
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #121212;
+    color: #ffffff;
+    min-height: 100vh;
 }
 
-.container{
 
-    width:90%;
+/* =========================================
+   HEADER
+========================================= */
 
-    max-width:900px;
+.topbar {
+    width: 100%;
+    min-height: 82px;
 
-    margin:30px auto;
+    padding: 18px 5%;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #1a1a1a;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 20;
 }
 
-.topo{
 
-    display:flex;
+/* LOGO */
 
-    gap:15px;
-
-    align-items:center;
-
-    margin-bottom:30px;
-
-    flex-wrap:wrap;
-
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-input{
-
-    padding:10px;
-
-    font-size:16px;
-
+.icone-sol {
+    font-size: 32px;
+    color: #ffb84d;
 }
 
-button{
+.marca h1 {
+    margin: 0;
 
-    background:#0f766e;
+    font-size: 24px;
+    font-weight: 800;
 
-    color:white;
-
-    border:none;
-
-    padding:10px 20px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
+    letter-spacing: 4px;
 }
 
-button:hover{
+.marca span {
+    display: block;
 
-    background:#115e59;
+    font-size: 11px;
+    letter-spacing: 5px;
 
+    color: #d86438;
 }
 
-.card{
 
-    background:white;
+/* BOTÃO VOLTAR */
 
-    border-radius:12px;
+.btn-voltar {
+    border: 1px solid rgba(255, 255, 255, 0.12);
 
-    margin-bottom:15px;
+    background: #242424;
 
-    padding:18px;
+    color: #ffffff;
 
-    display:flex;
+    padding: 11px 18px;
 
-    justify-content:space-between;
+    border-radius: 10px;
 
-    align-items:center;
+    font-size: 14px;
 
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    cursor: pointer;
 
+    transition: 0.2s;
 }
 
-.livre{
-
-    border-left:8px solid #22c55e;
-
+.btn-voltar:hover {
+    background: #d86438;
+    border-color: #d86438;
 }
 
-.ocupado{
 
-    border-left:8px solid #ef4444;
+/* =========================================
+   CONTAINER
+========================================= */
 
+.container {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 45px 0 60px;
 }
 
-.pendente{
 
-    border-left:8px solid #f59e0b;
+/* =========================================
+   HERO
+========================================= */
 
+.hero-agenda {
+    padding: 38px;
+
+    margin-bottom: 25px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(216, 100, 56, 0.22),
+            rgba(26, 26, 26, 0.95)
+        );
+
+    border: 1px solid rgba(216, 100, 56, 0.22);
 }
 
-.horario{
+.etiqueta {
+    display: inline-block;
 
-    font-size:22px;
+    margin-bottom: 10px;
 
-    font-weight:bold;
+    color: #ffb84d;
 
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
 }
 
-.info{
+.hero-agenda h2 {
+    margin: 0 0 10px;
 
-    flex:1;
-
-    margin-left:20px;
-
+    font-size: 34px;
 }
 
-.status{
+.hero-agenda p {
+    margin: 0;
 
-    font-weight:bold;
+    max-width: 650px;
 
+    color: #bdbdbd;
+
+    line-height: 1.6;
 }
 
-.carregando{
 
-    text-align:center;
+/* =========================================
+   CARD
+========================================= */
 
+.card {
+    background: #1a1a1a;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
+
+    padding: 22px;
+}
+
+
+/* =========================================
+   FILTRO
+========================================= */
+
+.filtro {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 20px;
+
+    margin-bottom: 40px;
+}
+
+.campo-data {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.campo-data label {
+    font-size: 13px;
+
+    color: #bdbdbd;
+}
+
+input[type="date"] {
+    width: 220px;
+
+    padding: 13px 14px;
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: #242424;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+input[type="date"]:focus {
+    border-color: #d86438;
+}
+
+
+/* BOTÃO ATUALIZAR */
+
+.btn-atualizar {
+    border: none;
+
+    background: #d86438;
+
+    color: #ffffff;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-atualizar:hover {
+    background: #cc5a2b;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.agenda-section {
+    margin-top: 10px;
+}
+
+.titulo-agenda {
+    margin-bottom: 20px;
+}
+
+.titulo-agenda h2 {
+    margin: 0 0 7px;
+
+    font-size: 26px;
+}
+
+.titulo-agenda p {
+    margin: 0;
+
+    color: #929292;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   LISTA DE AGENDA
+========================================= */
+
+.lista-agenda {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* =========================================
+   CARDS DE HORÁRIOS
+========================================= */
+
+.card {
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(216, 100, 56, 0.35);
+}
+
+
+/* Caso o JS crie os cards com .card */
+
+.lista-agenda .card {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    min-height: 85px;
+
+    padding: 20px 24px;
+
+    background: #1a1a1a;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.livre {
+    border-left: 5px solid #4ade80 !important;
+}
+
+.ocupado {
+    border-left: 5px solid #d86438 !important;
+}
+
+.pendente {
+    border-left: 5px solid #ffb84d !important;
+}
+
+
+/* =========================================
+   HORÁRIO
+========================================= */
+
+.horario {
+    min-width: 100px;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   INFORMAÇÕES
+========================================= */
+
+.info {
+    flex: 1;
+
+    margin-left: 5px;
+}
+
+.info strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+}
+
+.info span {
+    color: #999999;
+
+    font-size: 13px;
+}
+
+
+/* STATUS */
+
+.status {
+    font-weight: bold;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   CARREGANDO
+========================================= */
+
+.carregando {
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: #888888;
+
+    background: #1a1a1a;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 30px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: #0d0d0d;
+
+    color: #d86438;
+}
+
+footer span {
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+footer p {
+    margin: 8px 0 0;
+
+    color: #777777;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        padding: 15px 20px;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 15px;
+    }
+
+    .marca {
+        justify-content: center;
+    }
+
+    .btn-voltar {
+        width: 100%;
+    }
+
+    .container {
+        width: 92%;
+
+        padding-top: 25px;
+    }
+
+    .hero-agenda {
+        padding: 25px 20px;
+    }
+
+    .hero-agenda h2 {
+        font-size: 27px;
+    }
+
+    .filtro {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    input[type="date"] {
+        width: 100%;
+    }
+
+    .btn-atualizar {
+        width: 100%;
+    }
+
+    .lista-agenda .card {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+
+        padding: 18px;
+    }
+
+    .horario {
+        min-width: auto;
+
+        font-size: 20px;
+    }
+
+    .info {
+        margin-left: 0;
+    }
 }

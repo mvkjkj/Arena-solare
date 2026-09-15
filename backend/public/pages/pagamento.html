@@ -2,69 +2,147 @@
 <html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>Pagamento PIX | SOLARE ARENA</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pagamento PIX</title>
-
-<link rel="stylesheet" href="../css/pagamento.css">
-
+    <link rel="stylesheet" href="../css/pagamento.css">
 </head>
 
 <body>
 
-<div class="container">
+    <main class="pagamento-container">
 
-<h1>💳 Pagamento PIX</h1>
+        <section class="pagamento-card">
 
-<div class="card">
+            <div class="logo">
+                <span>☀</span>
 
-<h2 id="cliente">Cliente</h2>
+                <div>
+                    <strong>SOLARE</strong>
+                    <small>ARENA</small>
+                </div>
+            </div>
 
-<p id="modalidade"></p>
+            <div class="cabecalho">
 
-<p id="data"></p>
+                <span class="etiqueta">
+                    PAGAMENTO
+                </span>
 
-<p id="horario"></p>
+                <h1>Pagamento via PIX</h1>
 
-<h2 id="valor">R$ 0,00</h2>
+                <p>
+                    Finalize sua reserva de forma rápida e segura.
+                </p>
 
-<img
-id="qrcode"
-alt="QR Code PIX">
+            </div>
 
-<textarea
-id="pix"
-readonly>
-</textarea>
 
-<button id="copiar">
+            <div class="resumo">
 
-📋 Copiar Código PIX
+                <h2 id="cliente">
+                    Cliente
+                </h2>
 
-</button>
+                <div class="informacao">
+                    <span>Modalidade</span>
+                    <strong id="modalidade">-</strong>
+                </div>
 
-<button id="confirmar">
+                <div class="informacao">
+                    <span>Data</span>
+                    <strong id="data">-</strong>
+                </div>
 
-✅ Já Efetuei o Pagamento
+                <div class="informacao">
+                    <span>Horário</span>
+                    <strong id="horario">-</strong>
+                </div>
 
-</button>
+                <div class="valor">
+                    <span>Total da reserva</span>
+                    <strong id="valor">R$ 0,00</strong>
+                </div>
 
-<button id="voltar">
+            </div>
 
-⬅ Voltar
 
-</button>
+            <div class="pix-area">
 
-</div>
+                <span class="pix-titulo">
+                    ESCANEIE O QR CODE
+                </span>
 
-</div>
+                <div class="qrcode-box">
 
-<script src="../js/auth.js"></script>
+                    <img
+                        id="qrcode"
+                        alt="QR Code PIX">
 
-<script src="../js/pagamento.js"></script>
+                </div>
+
+                <p class="pix-ajuda">
+                    Aponte a câmera do aplicativo do seu banco
+                    para realizar o pagamento.
+                </p>
+
+            </div>
+
+
+            <div class="codigo-area">
+
+                <label for="pix">
+                    Ou copie o código PIX
+                </label>
+
+                <textarea
+                    id="pix"
+                    readonly></textarea>
+
+                <button
+                    id="copiar"
+                    class="btn-secundario">
+                    📋 Copiar código PIX
+                </button>
+
+            </div>
+
+
+            <div class="aviso">
+
+                <span>ℹ️</span>
+
+                <p>
+                    Este é um pagamento demonstrativo.
+                    Após realizar o pagamento, clique em
+                    <strong>“Já efetuei o pagamento”</strong>.
+                </p>
+
+            </div>
+
+
+            <button
+                id="confirmar"
+                class="btn-confirmar">
+                ✅ Já efetuei o pagamento
+            </button>
+
+
+            <button
+                id="voltar"
+                class="btn-voltar">
+                ← Voltar para minhas reservas
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/pagamento.js"></script>
 
 </body>
 

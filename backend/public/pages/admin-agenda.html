@@ -12,62 +12,85 @@
 
 <body>
 
-    <!-- CABEÇALHO -->
-    <header>
+    <header class="topbar">
 
-        <div>
-            <h1>☀️ SOLARE</h1>
-            <p>ARENA • Agenda das Quadras</p>
+        <div class="marca">
+            <span class="icone-sol">☀</span>
+
+            <div>
+                <h1>SOLARE</h1>
+                <span>ARENA</span>
+            </div>
         </div>
 
-        <button onclick="location.href='admin.html'">
+        <button
+            class="btn-voltar"
+            onclick="location.href='admin.html'">
             ← Painel Administrativo
         </button>
 
     </header>
 
 
-    <!-- CONTEÚDO -->
     <main class="container">
 
-        <!-- FILTRO -->
-        <section class="filtro card-filtro">
+        <section class="hero-agenda">
 
             <div>
+                <span class="etiqueta">ADMINISTRAÇÃO</span>
+
+                <h2>Agenda das Quadras</h2>
+
+                <p>
+                    Acompanhe a ocupação das quadras e visualize
+                    as reservas da SOLARE ARENA.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section class="filtro card">
+
+            <div class="campo-data">
+
                 <label for="data">
-                    Selecionar data
+                    Data da agenda
                 </label>
 
                 <input
                     type="date"
-                    id="data"
-                >
+                    id="data">
+
             </div>
 
-            <button id="atualizar">
+            <button
+                id="atualizar"
+                class="btn-atualizar">
                 🔄 Atualizar Agenda
             </button>
 
         </section>
 
 
-        <!-- AGENDA -->
-        <section>
+        <section class="agenda-section">
 
             <div class="titulo-agenda">
 
                 <div>
-                    <h2>📅 Agenda do dia</h2>
+                    <span class="etiqueta">RESERVAS</span>
+
+                    <h2>Agenda do dia</h2>
 
                     <p>
-                        Visualize a ocupação das quadras em tempo real.
+                        Visualização dos horários e ocupação das quadras.
                     </p>
                 </div>
 
             </div>
 
 
-            <div id="agenda">
+            <div id="agenda" class="lista-agenda">
 
                 <p class="carregando">
                     Carregando agenda...
@@ -78,6 +101,12 @@
         </section>
 
     </main>
+
+
+    <footer>
+        <span>☀ SOLARE ARENA</span>
+        <p>Gestão de quadras e reservas</p>
+    </footer>
 
 
     <script src="../js/auth.js"></script>

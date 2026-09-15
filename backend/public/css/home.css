@@ -233,32 +233,23 @@ header {
 ========================= */
 
 .hero {
-
     position: relative;
-
     min-height: 100vh;
-
     display: flex;
-
     align-items: center;
-
     overflow: hidden;
 
     background-image:
-
         linear-gradient(
             90deg,
             rgba(10,10,10,.88) 0%,
             rgba(10,10,10,.65) 45%,
             rgba(10,10,10,.25) 100%
         ),
-
-        url("../images/arena-fachada.jpg");
+        url("../images/arena-quadras.jpg");
 
     background-size: cover;
-
     background-position: center;
-
 }
 
 
@@ -279,19 +270,14 @@ header {
 
 
 .hero-content {
-
     position: relative;
-
     z-index: 2;
 
-    width: 92%;
+    width: 90%;
+    max-width: 1250px;
 
-    max-width: 1350px;
-
-    margin: auto;
-
-    padding-top: 70px;
-
+    margin: 0 auto;
+    padding-top: 40px;
 }
 
 

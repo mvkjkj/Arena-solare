@@ -58,27 +58,50 @@ document.getElementById("copiar").onclick=()=>{
 
 };
 
-document.getElementById("confirmar").onclick=async()=>{
+document.getElementById("confirmar").onclick = async () => {
 
-    const resposta=await api(
+    try {
 
-        "/api/pagamento/confirmar/"+id,
+        const resposta = await api(
+            "/api/pagamento/confirmar/" + id,
+            {
+                method: "PUT"
+            }
+        );
 
-        {
+        if (!resposta) return;
 
-            method:"PUT"
+        const dados = await resposta.json();
 
+        if (!resposta.ok) {
+
+            alert(
+                dados.erro ||
+                "Não foi possível confirmar o pagamento."
+            );
+
+            return;
         }
 
-    );
+        alert(
+            dados.mensagem ||
+            "✅ Pagamento registrado com sucesso!"
+        );
 
-    if(!resposta)return;
+        location.href = "/pages/minhas-reservas.html";
 
-    const dados=await resposta.json();
+    } catch (erro) {
 
-    alert(dados.mensagem);
+        console.error(
+            "Erro ao confirmar pagamento:",
+            erro
+        );
 
-    location.href="/minhas-reservas";
+        alert(
+            "Erro ao confirmar pagamento."
+        );
+
+    }
 
 };
 

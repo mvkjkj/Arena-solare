@@ -1,13 +1,16 @@
 // =========================
 // VERIFICA LOGIN
 // =========================
+
 if (!verificarLogin()) {
     throw new Error("Usuário não autenticado.");
 }
 
+
 // =========================
 // ELEMENTOS
 // =========================
+
 const modalidade = document.getElementById("modalidade");
 const data = document.getElementById("data");
 const horario = document.getElementById("horario");
@@ -17,18 +20,27 @@ const formulario = document.getElementById("reservaForm");
 
 const VALOR_HORA = 70;
 
+
 // =========================
 // MODALIDADES
 // =========================
+
 async function carregarModalidades() {
 
     try {
 
-        const resposta = await fetch("/api/modalidades");
+        const resposta = await api("/api/modalidades");
+
+        if (!resposta) return;
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao carregar modalidades.");
+        }
 
         const modalidades = await resposta.json();
 
-        modalidade.innerHTML = '<option value="">Selecione</option>';
+        modalidade.innerHTML =
+            '<option value="">Selecione</option>';
 
         modalidades.forEach((m) => {
 
@@ -42,7 +54,7 @@ async function carregarModalidades() {
 
     } catch (erro) {
 
-        console.error(erro);
+        console.error("Erro nas modalidades:", erro);
 
         alert("Erro ao carregar modalidades.");
 
@@ -50,15 +62,17 @@ async function carregarModalidades() {
 
 }
 
+
 // =========================
-// HORÁRIOS
+// HORÁRIOS DISPONÍVEIS
 // =========================
+
 async function carregarHorarios() {
 
     if (!modalidade.value || !data.value) {
 
         horario.innerHTML =
-            "<option>Selecione modalidade e data</option>";
+            "<option value=''>Selecione modalidade e data</option>";
 
         return;
 
@@ -67,21 +81,29 @@ async function carregarHorarios() {
     try {
 
         const resposta = await api(
-
             `/api/horarios-disponiveis?modalidade=${modalidade.value}&data=${data.value}`
-
         );
 
         if (!resposta) return;
+
+        if (!resposta.ok) {
+
+            const erro = await resposta.json();
+
+            throw new Error(
+                erro.erro || "Erro ao carregar horários."
+            );
+
+        }
 
         const horarios = await resposta.json();
 
         horario.innerHTML = "";
 
-        if (horarios.length === 0) {
+        if (!horarios || horarios.length === 0) {
 
             horario.innerHTML =
-                "<option>Nenhum horário disponível</option>";
+                "<option value=''>Nenhum horário disponível</option>";
 
             return;
 
@@ -99,7 +121,10 @@ async function carregarHorarios() {
 
     } catch (erro) {
 
-        console.error(erro);
+        console.error("Erro nos horários:", erro);
+
+        horario.innerHTML =
+            "<option value=''>Erro ao carregar horários</option>";
 
         alert("Erro ao carregar horários.");
 
@@ -107,107 +132,157 @@ async function carregarHorarios() {
 
 }
 
+
 // =========================
 // CALCULAR VALOR
 // =========================
+
 function calcularValor() {
 
-    const total = Number(duracao.value) * VALOR_HORA;
+    const horas = Number(duracao.value);
+
+    const total = horas * VALOR_HORA;
 
     valor.textContent = total.toLocaleString(
-
         "pt-BR",
-
         {
-
             style: "currency",
-
             currency: "BRL"
-
         }
-
     );
 
 }
 
-duracao.addEventListener("change", calcularValor);
-modalidade.addEventListener("change", carregarHorarios);
-data.addEventListener("change", carregarHorarios);
 
 // =========================
-// RESERVAR
+// EVENTOS
 // =========================
-formulario.addEventListener("submit", async (e) => {
 
-    e.preventDefault();
+duracao.addEventListener(
+    "change",
+    calcularValor
+);
 
-    try {
+modalidade.addEventListener(
+    "change",
+    carregarHorarios
+);
 
-        const resposta = await api(
+data.addEventListener(
+    "change",
+    carregarHorarios
+);
 
-            "/api/reservar",
 
-            {
+// =========================
+// CRIAR RESERVA
+// =========================
 
-                method: "POST",
+formulario.addEventListener(
+    "submit",
+    async (e) => {
 
-                headers: {
+        e.preventDefault();
 
-                    "Content-Type": "application/json"
+        try {
 
-                },
+            const resposta = await api(
+                "/api/reservar",
+                {
+                    method: "POST",
 
-                body: JSON.stringify({
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
 
-                    modalidade_id: modalidade.value,
+                    body: JSON.stringify({
 
-                    data: data.value,
+                        modalidade_id: modalidade.value,
 
-                    horario_id: horario.value,
+                        data: data.value,
 
-                    duracao: Number(duracao.value),
+                        horario_id: horario.value,
 
-                    valor: Number(duracao.value) * VALOR_HORA
+                        duracao: Number(duracao.value),
 
-                })
+                        valor:
+                            Number(duracao.value) *
+                            VALOR_HORA
+
+                    })
+                }
+            );
+
+            if (!resposta) return;
+
+
+            // =========================
+            // RESPOSTA DO SERVIDOR
+            // =========================
+
+            const dados = await resposta.json();
+
+
+            // =========================
+            // ERRO
+            // =========================
+
+            if (!resposta.ok) {
+
+                alert(
+                    dados.erro ||
+                    "Não foi possível criar a reserva."
+                );
+
+                return;
 
             }
 
-        );
 
-        if (!resposta) return;
+            // =========================
+            // RESERVA CRIADA
+            // =========================
 
-        const dados = await resposta.json();
+            if (dados.reserva) {
 
-        if (!resposta.ok) {
+                window.location.href =
+                    "/pages/pagamento.html?id=" +
+                    dados.reserva;
 
-            alert(dados.erro);
+                return;
 
-            return;
+            }
+
+
+            // =========================
+            // RESERVA SEM ID
+            // =========================
+
+            alert(
+                "Reserva criada, mas não foi possível abrir o pagamento."
+            );
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao criar reserva:",
+                erro
+            );
+
+            alert(
+                "Erro ao criar reserva."
+            );
 
         }
 
-        alert("✅ Reserva criada com sucesso!");
-
-        formulario.reset();
-
-        calcularValor();
-
-        carregarHorarios();
-
-    } catch (erro) {
-
-        console.error(erro);
-
-        alert("Erro ao criar reserva.");
-
     }
+);
 
-});
 
 // =========================
 // INICIAR
 // =========================
+
 carregarModalidades();
 
 calcularValor();

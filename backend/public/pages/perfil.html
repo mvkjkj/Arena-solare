@@ -2,47 +2,56 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Meu Perfil | SOLARE ARENA</title>
 
     <link rel="stylesheet" href="/css/dashboard.css">
+
 </head>
 
 <body>
 
     <!-- MENU LATERAL -->
+
     <div class="sidebar">
 
         <h2>☀️ SOLARE</h2>
+
         <small>ARENA</small>
 
         <hr>
+
 
         <button onclick="location.href='/dashboard'">
             🏠 Dashboard
         </button>
 
+
         <button onclick="location.href='/pages/reserva.html'">
             📅 Nova Reserva
         </button>
+
 
         <button onclick="location.href='/pages/minhas-reservas.html'">
             📋 Minhas Reservas
         </button>
 
+
         <button class="active">
             👤 Meu Perfil
         </button>
 
-        <button id="btnRecepcao">
-            🖥 Recepção
-        </button>
 
-        <button id="btnAdmin">
-            ⚙ Administração
-        </button>
+        <!--
+            Recepção e Administração
+            serão adicionados somente
+            para usuários autorizados.
+        -->
+
 
         <button onclick="sair()">
             🚪 Sair
@@ -52,6 +61,7 @@
 
 
     <!-- CONTEÚDO -->
+
     <div class="content">
 
         <header>
@@ -66,11 +76,13 @@
 
 
         <!-- INFORMAÇÕES PESSOAIS -->
+
         <section class="cards">
 
             <div class="card">
 
                 <h2>Informações pessoais</h2>
+
 
                 <form id="perfilForm">
 
@@ -119,9 +131,11 @@
 
 
             <!-- ALTERAR SENHA -->
+
             <div class="card">
 
                 <h2>🔐 Alterar senha</h2>
+
 
                 <form id="senhaForm">
 
@@ -132,7 +146,7 @@
                     <input
                         type="password"
                         id="senha"
-                        minlength="6"
+                        minlength="8"
                         autocomplete="new-password"
                         required
                     >
@@ -145,7 +159,7 @@
                     <input
                         type="password"
                         id="confirmarSenha"
-                        minlength="6"
+                        minlength="8"
                         autocomplete="new-password"
                         required
                     >
@@ -165,7 +179,96 @@
 
 
     <script src="/js/auth.js"></script>
+
     <script src="/js/perfil.js"></script>
+
+
+    <!-- CONTROLE DE ACESSO DO MENU -->
+
+    <script>
+
+        const usuario = JSON.parse(
+            localStorage.getItem("usuario")
+        );
+
+
+        if (!usuario) {
+
+            location.href = "/pages/login.html";
+
+        }
+
+
+        const tipo = usuario.tipo;
+
+        const sidebar =
+            document.querySelector(".sidebar");
+
+        const botaoSair =
+            sidebar.querySelector("button:last-child");
+
+
+        // ==============================
+        // RECEPÇÃO
+        // ==============================
+
+        if (
+            tipo === "recepcao" ||
+            tipo === "admin" ||
+            tipo === "gerente"
+        ) {
+
+            const btnRecepcao =
+                document.createElement("button");
+
+            btnRecepcao.innerHTML =
+                "🖥 Recepção";
+
+            btnRecepcao.onclick = () => {
+
+                location.href =
+                    "/pages/recepcao.html";
+
+            };
+
+            sidebar.insertBefore(
+                btnRecepcao,
+                botaoSair
+            );
+
+        }
+
+
+        // ==============================
+        // ADMINISTRAÇÃO
+        // ==============================
+
+        if (
+            tipo === "admin" ||
+            tipo === "gerente"
+        ) {
+
+            const btnAdmin =
+                document.createElement("button");
+
+            btnAdmin.innerHTML =
+                "⚙ Administração";
+
+            btnAdmin.onclick = () => {
+
+                location.href =
+                    "/pages/admin.html";
+
+            };
+
+            sidebar.insertBefore(
+                btnAdmin,
+                botaoSair
+            );
+
+        }
+
+    </script>
 
 </body>
 

@@ -3,24 +3,21 @@
 // ==============================
 
 if (!verificarLogin()) {
-
     throw new Error("Usuário não autenticado.");
-
 }
 
-const usuario = JSON.parse(
+const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-    localStorage.getItem("usuario")
-
-);
+if (!usuario) {
+    location.href = "/pages/login.html";
+    throw new Error("Usuário não encontrado.");
+}
 
 // ==============================
 // NOME
 // ==============================
 
-document.getElementById("nomeUsuario").textContent =
-
-    usuario.nome;
+document.getElementById("nomeUsuario").textContent = usuario.nome;
 
 // ==============================
 // PERMISSÕES
@@ -28,84 +25,64 @@ document.getElementById("nomeUsuario").textContent =
 
 const tipo = usuario.tipo;
 
-if (tipo !== "admin") {
+// Cliente
+if (tipo === "cliente") {
 
-    const admin = document.getElementById("btnAdmin");
-
-    if (admin) {
-
-        admin.style.display = "none";
-
-    }
+    document.getElementById("btnRecepcao")?.remove();
+    document.getElementById("btnAdmin")?.remove();
 
 }
 
-if (
+// Recepção
+else if (tipo === "recepcao") {
 
-    tipo !== "admin"
-
-    &&
-
-    tipo !== "gerente"
-
-    &&
-
-    tipo !== "recepcao"
-
-) {
-
-    const recepcao = document.getElementById("btnRecepcao");
-
-    if (recepcao) {
-
-        recepcao.style.display = "none";
-
-    }
+    document.getElementById("btnAdmin")?.remove();
 
 }
+
+// Admin e gerente
+// Podem visualizar os dois menus
 
 // ==============================
 // BOTÕES
 // ==============================
 
 document.getElementById("btnReserva").onclick = () => {
-
     location.href = "/pages/reserva.html";
-
 };
 
 document.getElementById("btnMinhasReservas").onclick = () => {
-
     location.href = "/pages/minhas-reservas.html";
-
 };
 
 document.getElementById("btnPerfil").onclick = () => {
-
     location.href = "/pages/perfil.html";
-
 };
+
+// ==============================
+// ADMIN
+// ==============================
 
 const btnAdmin = document.getElementById("btnAdmin");
 
 if (btnAdmin) {
 
     btnAdmin.onclick = () => {
-
         location.href = "/pages/admin.html";
-
     };
 
 }
+
+// ==============================
+// RECEPÇÃO
+// ==============================
 
 const btnRecepcao = document.getElementById("btnRecepcao");
 
 if (btnRecepcao) {
 
     btnRecepcao.onclick = () => {
-
         location.href = "/pages/recepcao.html";
-
     };
 
 }
@@ -117,7 +94,6 @@ if (btnRecepcao) {
 document.getElementById("btnSair").onclick = () => {
 
     localStorage.removeItem("token");
-
     localStorage.removeItem("usuario");
 
     location.href = "/pages/login.html";

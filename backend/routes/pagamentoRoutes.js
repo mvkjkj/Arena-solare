@@ -24,17 +24,10 @@ router.get(
 // CONFIRMAR PAGAMENTO
 // ========================================
 router.put(
-
     "/pagamento/confirmar/:id",
-
     verificarToken,
-
-    verificarRecepcao,
-
     pagamentoController.confirmarPagamento
-
 );
-
 // ========================================
 // CANCELAR PAGAMENTO
 // ========================================
